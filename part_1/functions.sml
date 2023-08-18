@@ -14,3 +14,6 @@ fun cube(x: int) =
 val sixtyfour = cube(4)
 
 val fortyfour = pow(2,2+2) + pow(4,2) + cube(2) + 2
+
+(* nesting *)
+
