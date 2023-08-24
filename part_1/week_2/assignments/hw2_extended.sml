@@ -83,7 +83,7 @@ fun oldest(dates: (int*int*int) list) =
 
   fun number_in_months_challenge (dates, months) =
       let
-        fun filtered_months xs =
+        fun dedupe xs =
               if null xs
                 then []
               else
@@ -92,10 +92,27 @@ fun oldest(dates: (int*int*int) list) =
                     if a = hd bs then remove(a, tl bs)
                     else hd bs :: remove(a, tl bs)
                 in
-                  (hd xs) :: filtered_months(remove(hd xs, tl xs))
+                  (hd xs) :: dedupe(remove(hd xs, tl xs))
                 end
       in
-          number_in_months(dates, filtered_months months)
+          number_in_months(dates, dedupe months)
+      end
+
+fun dates_in_months_callenge (dates, months) =
+      let
+        fun dedupe xs =
+              if null xs
+                then []
+              else
+                let
+                  fun remove (a, bs) =
+                    if a = hd bs then remove(a, tl bs)
+                    else hd bs :: remove(a, tl bs)
+                in
+                  (hd xs) :: dedupe(remove(hd xs, tl xs))
+                end
+      in
+        dates_in_months(dates, dedupe months)
       end
     
 fun reasonable_date (date: int*int*int) =

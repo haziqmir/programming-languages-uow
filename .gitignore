@@ -1,0 +1,4 @@
+# ignore all .gitignores
+# ignore all .DS_Stores or whatever
+# across all directories
+# ignore all /lectures/
