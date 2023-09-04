@@ -7,6 +7,8 @@ use "hw2.sml"
 
 val test1 = is_older ((1,2,3),(2,3,4)) = true
 
+val test1b = is_older((5,4,4),(4,5,4)) = false
+
 val test2 = number_in_month ([(2012,2,28),(2013,12,1)],2) = 1
 
 val test3 = number_in_months ([(2012,2,28),(2013,12,1),(2011,3,31),(2011,4,28)],[2,3,4]) = 3

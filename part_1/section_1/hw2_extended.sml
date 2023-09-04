@@ -1,8 +1,12 @@
+(* (int * int * int) where #1 is year, #2 is month, #3 is day *)
+(* i can rewrite this to use one less branch *)
 fun is_older (x: int*int*int, y: int*int*int) =
-    if (#1 x) < (#1 y) then true
-    else if (#2 x) < (#2 y) then true
-    else if (#3 x) < (#3 y) then true
-    else false
+  if (#1 x) < (#1 y) then true
+  else if (#1 x) > (#1 y) then false
+  else if (#2 x) < (#2 y) then true
+  else if (#2 x) > (#2 y) then false
+  else if (#3 x) < (#3 y) then true
+  else false
 
 fun number_in_month (dates: (int*int*int) list, month: int) =
     if null dates
