@@ -102,7 +102,7 @@ fun oldest(dates: (int*int*int) list) =
           number_in_months(dates, dedupe months)
       end
 
-fun dates_in_months_callenge (dates, months) =
+fun dates_in_months_callenge (dates: (int*int*int) list, months: int list) =
       let
         fun dedupe xs =
               if null xs
@@ -122,10 +122,12 @@ fun dates_in_months_callenge (dates, months) =
 fun reasonable_date (date: int*int*int) =
   let 
     fun validate_year (year: int) = year > 0
-    fun validate_month (month: int) = month > 0 andalso month <= 12
+    fun validate_month (month: int) = month >= 0 andalso month <= 12
     fun validate_day(day: int, month: int, year: int) =
       let  
-        val is_leap = year mod 4 = 0 orelse (year mod 4 = 0 andalso year mod 100 <> 0)
+        (* val is_leap = year mod 4 = 0 orelse (year mod 4 = 0 andalso year mod 100 <> 0) *)
+        val is_leap = (year mod 4 = 0 orelse year mod 400 = 0) andalso year mod
+        100 <> 0
         val feb_length = if is_leap then 29 else 28
         val month_lengths = [31,feb_length,31,30,31,30,31,31,30,31,30,31]
         fun days_in_month(month: int, month_list: int list, idx: int) = 
@@ -140,3 +142,6 @@ fun reasonable_date (date: int*int*int) =
     validate_year(#1 date) andalso validate_month(#2 date) andalso
     validate_day(#3 date, #2 date, #1 date)
   end
+
+
+(* val test13 = reasonable_date(2100,2,29) = false *)
